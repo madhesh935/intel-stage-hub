@@ -72,14 +72,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "TalentStage — AI-Powered Creator & Freelancer Marketplace" },
+      { name: "description", content: "Hire elite freelancers with AI-powered matching, verified skills, and milestone-based payments. Join TalentStage today." },
+      { name: "author", content: "TalentStage" },
+      { property: "og:title", content: "TalentStage — AI-Powered Creator & Freelancer Marketplace" },
+      { property: "og:description", content: "AI matching. Verified skills. Milestone-based payments." },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:site", content: "@TalentStage" },
     ],
     links: [
       {
