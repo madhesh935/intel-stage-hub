@@ -20,6 +20,13 @@ import { Route as ClientRouteImport } from './routes/client'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard.index'
 import { Route as ClientIndexRouteImport } from './routes/client.index'
+import { Route as DashboardSkillsRouteImport } from './routes/dashboard.skills'
+import { Route as DashboardSettingsRouteImport } from './routes/dashboard.settings'
+import { Route as DashboardProposalsRouteImport } from './routes/dashboard.proposals'
+import { Route as DashboardPortfolioRouteImport } from './routes/dashboard.portfolio'
+import { Route as DashboardMessagesRouteImport } from './routes/dashboard.messages'
+import { Route as DashboardEarningsRouteImport } from './routes/dashboard.earnings'
+import { Route as DashboardContractsRouteImport } from './routes/dashboard.contracts'
 
 const RoleRoute = RoleRouteImport.update({
   id: '/role',
@@ -76,6 +83,41 @@ const ClientIndexRoute = ClientIndexRouteImport.update({
   path: '/',
   getParentRoute: () => ClientRoute,
 } as any)
+const DashboardSkillsRoute = DashboardSkillsRouteImport.update({
+  id: '/skills',
+  path: '/skills',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardSettingsRoute = DashboardSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardProposalsRoute = DashboardProposalsRouteImport.update({
+  id: '/proposals',
+  path: '/proposals',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardPortfolioRoute = DashboardPortfolioRouteImport.update({
+  id: '/portfolio',
+  path: '/portfolio',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardMessagesRoute = DashboardMessagesRouteImport.update({
+  id: '/messages',
+  path: '/messages',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardEarningsRoute = DashboardEarningsRouteImport.update({
+  id: '/earnings',
+  path: '/earnings',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardContractsRoute = DashboardContractsRouteImport.update({
+  id: '/contracts',
+  path: '/contracts',
+  getParentRoute: () => DashboardRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -87,6 +129,13 @@ export interface FileRoutesByFullPath {
   '/marketplace': typeof MarketplaceRoute
   '/register': typeof RegisterRoute
   '/role': typeof RoleRoute
+  '/dashboard/contracts': typeof DashboardContractsRoute
+  '/dashboard/earnings': typeof DashboardEarningsRoute
+  '/dashboard/messages': typeof DashboardMessagesRoute
+  '/dashboard/portfolio': typeof DashboardPortfolioRoute
+  '/dashboard/proposals': typeof DashboardProposalsRoute
+  '/dashboard/settings': typeof DashboardSettingsRoute
+  '/dashboard/skills': typeof DashboardSkillsRoute
   '/client/': typeof ClientIndexRoute
   '/dashboard/': typeof DashboardIndexRoute
 }
@@ -98,6 +147,13 @@ export interface FileRoutesByTo {
   '/marketplace': typeof MarketplaceRoute
   '/register': typeof RegisterRoute
   '/role': typeof RoleRoute
+  '/dashboard/contracts': typeof DashboardContractsRoute
+  '/dashboard/earnings': typeof DashboardEarningsRoute
+  '/dashboard/messages': typeof DashboardMessagesRoute
+  '/dashboard/portfolio': typeof DashboardPortfolioRoute
+  '/dashboard/proposals': typeof DashboardProposalsRoute
+  '/dashboard/settings': typeof DashboardSettingsRoute
+  '/dashboard/skills': typeof DashboardSkillsRoute
   '/client': typeof ClientIndexRoute
   '/dashboard': typeof DashboardIndexRoute
 }
@@ -112,6 +168,13 @@ export interface FileRoutesById {
   '/marketplace': typeof MarketplaceRoute
   '/register': typeof RegisterRoute
   '/role': typeof RoleRoute
+  '/dashboard/contracts': typeof DashboardContractsRoute
+  '/dashboard/earnings': typeof DashboardEarningsRoute
+  '/dashboard/messages': typeof DashboardMessagesRoute
+  '/dashboard/portfolio': typeof DashboardPortfolioRoute
+  '/dashboard/proposals': typeof DashboardProposalsRoute
+  '/dashboard/settings': typeof DashboardSettingsRoute
+  '/dashboard/skills': typeof DashboardSkillsRoute
   '/client/': typeof ClientIndexRoute
   '/dashboard/': typeof DashboardIndexRoute
 }
@@ -127,6 +190,13 @@ export interface FileRouteTypes {
     | '/marketplace'
     | '/register'
     | '/role'
+    | '/dashboard/contracts'
+    | '/dashboard/earnings'
+    | '/dashboard/messages'
+    | '/dashboard/portfolio'
+    | '/dashboard/proposals'
+    | '/dashboard/settings'
+    | '/dashboard/skills'
     | '/client/'
     | '/dashboard/'
   fileRoutesByTo: FileRoutesByTo
@@ -138,6 +208,13 @@ export interface FileRouteTypes {
     | '/marketplace'
     | '/register'
     | '/role'
+    | '/dashboard/contracts'
+    | '/dashboard/earnings'
+    | '/dashboard/messages'
+    | '/dashboard/portfolio'
+    | '/dashboard/proposals'
+    | '/dashboard/settings'
+    | '/dashboard/skills'
     | '/client'
     | '/dashboard'
   id:
@@ -151,6 +228,13 @@ export interface FileRouteTypes {
     | '/marketplace'
     | '/register'
     | '/role'
+    | '/dashboard/contracts'
+    | '/dashboard/earnings'
+    | '/dashboard/messages'
+    | '/dashboard/portfolio'
+    | '/dashboard/proposals'
+    | '/dashboard/settings'
+    | '/dashboard/skills'
     | '/client/'
     | '/dashboard/'
   fileRoutesById: FileRoutesById
@@ -246,6 +330,55 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ClientIndexRouteImport
       parentRoute: typeof ClientRoute
     }
+    '/dashboard/skills': {
+      id: '/dashboard/skills'
+      path: '/skills'
+      fullPath: '/dashboard/skills'
+      preLoaderRoute: typeof DashboardSkillsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/settings': {
+      id: '/dashboard/settings'
+      path: '/settings'
+      fullPath: '/dashboard/settings'
+      preLoaderRoute: typeof DashboardSettingsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/proposals': {
+      id: '/dashboard/proposals'
+      path: '/proposals'
+      fullPath: '/dashboard/proposals'
+      preLoaderRoute: typeof DashboardProposalsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/portfolio': {
+      id: '/dashboard/portfolio'
+      path: '/portfolio'
+      fullPath: '/dashboard/portfolio'
+      preLoaderRoute: typeof DashboardPortfolioRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/messages': {
+      id: '/dashboard/messages'
+      path: '/messages'
+      fullPath: '/dashboard/messages'
+      preLoaderRoute: typeof DashboardMessagesRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/earnings': {
+      id: '/dashboard/earnings'
+      path: '/earnings'
+      fullPath: '/dashboard/earnings'
+      preLoaderRoute: typeof DashboardEarningsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/contracts': {
+      id: '/dashboard/contracts'
+      path: '/contracts'
+      fullPath: '/dashboard/contracts'
+      preLoaderRoute: typeof DashboardContractsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
   }
 }
 
@@ -261,10 +394,24 @@ const ClientRouteWithChildren =
   ClientRoute._addFileChildren(ClientRouteChildren)
 
 interface DashboardRouteChildren {
+  DashboardContractsRoute: typeof DashboardContractsRoute
+  DashboardEarningsRoute: typeof DashboardEarningsRoute
+  DashboardMessagesRoute: typeof DashboardMessagesRoute
+  DashboardPortfolioRoute: typeof DashboardPortfolioRoute
+  DashboardProposalsRoute: typeof DashboardProposalsRoute
+  DashboardSettingsRoute: typeof DashboardSettingsRoute
+  DashboardSkillsRoute: typeof DashboardSkillsRoute
   DashboardIndexRoute: typeof DashboardIndexRoute
 }
 
 const DashboardRouteChildren: DashboardRouteChildren = {
+  DashboardContractsRoute: DashboardContractsRoute,
+  DashboardEarningsRoute: DashboardEarningsRoute,
+  DashboardMessagesRoute: DashboardMessagesRoute,
+  DashboardPortfolioRoute: DashboardPortfolioRoute,
+  DashboardProposalsRoute: DashboardProposalsRoute,
+  DashboardSettingsRoute: DashboardSettingsRoute,
+  DashboardSkillsRoute: DashboardSkillsRoute,
   DashboardIndexRoute: DashboardIndexRoute,
 }
 
