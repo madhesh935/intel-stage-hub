@@ -9,38 +9,391 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as RoleRouteImport } from './routes/role'
+import { Route as RegisterRouteImport } from './routes/register'
+import { Route as MarketplaceRouteImport } from './routes/marketplace'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
+import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as CommunityRouteImport } from './routes/community'
+import { Route as ClientRouteImport } from './routes/client'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DashboardIndexRouteImport } from './routes/dashboard.index'
+import { Route as ClientIndexRouteImport } from './routes/client.index'
+import { Route as WorkspaceIdRouteImport } from './routes/workspace.$id'
+import { Route as DashboardSkillsRouteImport } from './routes/dashboard.skills'
+import { Route as DashboardSettingsRouteImport } from './routes/dashboard.settings'
+import { Route as DashboardProposalsRouteImport } from './routes/dashboard.proposals'
+import { Route as DashboardPortfolioRouteImport } from './routes/dashboard.portfolio'
+import { Route as DashboardMessagesRouteImport } from './routes/dashboard.messages'
+import { Route as DashboardEarningsRouteImport } from './routes/dashboard.earnings'
+import { Route as DashboardContractsRouteImport } from './routes/dashboard.contracts'
+import { Route as ClientSavedRouteImport } from './routes/client.saved'
+import { Route as ClientProposalsRouteImport } from './routes/client.proposals'
+import { Route as ClientProjectsRouteImport } from './routes/client.projects'
+import { Route as ClientPostRouteImport } from './routes/client.post'
+import { Route as ClientPaymentsRouteImport } from './routes/client.payments'
+import { Route as ClientHiredRouteImport } from './routes/client.hired'
 
+const RoleRoute = RoleRouteImport.update({
+  id: '/role',
+  path: '/role',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarketplaceRoute = MarketplaceRouteImport.update({
+  id: '/marketplace',
+  path: '/marketplace',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
+  id: '/forgot-password',
+  path: '/forgot-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommunityRoute = CommunityRouteImport.update({
+  id: '/community',
+  path: '/community',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClientRoute = ClientRouteImport.update({
+  id: '/client',
+  path: '/client',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardIndexRoute = DashboardIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const ClientIndexRoute = ClientIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ClientRoute,
+} as any)
+const WorkspaceIdRoute = WorkspaceIdRouteImport.update({
+  id: '/workspace/$id',
+  path: '/workspace/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardSkillsRoute = DashboardSkillsRouteImport.update({
+  id: '/skills',
+  path: '/skills',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardSettingsRoute = DashboardSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardProposalsRoute = DashboardProposalsRouteImport.update({
+  id: '/proposals',
+  path: '/proposals',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardPortfolioRoute = DashboardPortfolioRouteImport.update({
+  id: '/portfolio',
+  path: '/portfolio',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardMessagesRoute = DashboardMessagesRouteImport.update({
+  id: '/messages',
+  path: '/messages',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardEarningsRoute = DashboardEarningsRouteImport.update({
+  id: '/earnings',
+  path: '/earnings',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardContractsRoute = DashboardContractsRouteImport.update({
+  id: '/contracts',
+  path: '/contracts',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const ClientSavedRoute = ClientSavedRouteImport.update({
+  id: '/saved',
+  path: '/saved',
+  getParentRoute: () => ClientRoute,
+} as any)
+const ClientProposalsRoute = ClientProposalsRouteImport.update({
+  id: '/proposals',
+  path: '/proposals',
+  getParentRoute: () => ClientRoute,
+} as any)
+const ClientProjectsRoute = ClientProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
+  getParentRoute: () => ClientRoute,
+} as any)
+const ClientPostRoute = ClientPostRouteImport.update({
+  id: '/post',
+  path: '/post',
+  getParentRoute: () => ClientRoute,
+} as any)
+const ClientPaymentsRoute = ClientPaymentsRouteImport.update({
+  id: '/payments',
+  path: '/payments',
+  getParentRoute: () => ClientRoute,
+} as any)
+const ClientHiredRoute = ClientHiredRouteImport.update({
+  id: '/hired',
+  path: '/hired',
+  getParentRoute: () => ClientRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/client': typeof ClientRouteWithChildren
+  '/community': typeof CommunityRoute
+  '/dashboard': typeof DashboardRouteWithChildren
+  '/forgot-password': typeof ForgotPasswordRoute
+  '/login': typeof LoginRoute
+  '/marketplace': typeof MarketplaceRoute
+  '/register': typeof RegisterRoute
+  '/role': typeof RoleRoute
+  '/client/hired': typeof ClientHiredRoute
+  '/client/payments': typeof ClientPaymentsRoute
+  '/client/post': typeof ClientPostRoute
+  '/client/projects': typeof ClientProjectsRoute
+  '/client/proposals': typeof ClientProposalsRoute
+  '/client/saved': typeof ClientSavedRoute
+  '/dashboard/contracts': typeof DashboardContractsRoute
+  '/dashboard/earnings': typeof DashboardEarningsRoute
+  '/dashboard/messages': typeof DashboardMessagesRoute
+  '/dashboard/portfolio': typeof DashboardPortfolioRoute
+  '/dashboard/proposals': typeof DashboardProposalsRoute
+  '/dashboard/settings': typeof DashboardSettingsRoute
+  '/dashboard/skills': typeof DashboardSkillsRoute
+  '/workspace/$id': typeof WorkspaceIdRoute
+  '/client/': typeof ClientIndexRoute
+  '/dashboard/': typeof DashboardIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/community': typeof CommunityRoute
+  '/forgot-password': typeof ForgotPasswordRoute
+  '/login': typeof LoginRoute
+  '/marketplace': typeof MarketplaceRoute
+  '/register': typeof RegisterRoute
+  '/role': typeof RoleRoute
+  '/client/hired': typeof ClientHiredRoute
+  '/client/payments': typeof ClientPaymentsRoute
+  '/client/post': typeof ClientPostRoute
+  '/client/projects': typeof ClientProjectsRoute
+  '/client/proposals': typeof ClientProposalsRoute
+  '/client/saved': typeof ClientSavedRoute
+  '/dashboard/contracts': typeof DashboardContractsRoute
+  '/dashboard/earnings': typeof DashboardEarningsRoute
+  '/dashboard/messages': typeof DashboardMessagesRoute
+  '/dashboard/portfolio': typeof DashboardPortfolioRoute
+  '/dashboard/proposals': typeof DashboardProposalsRoute
+  '/dashboard/settings': typeof DashboardSettingsRoute
+  '/dashboard/skills': typeof DashboardSkillsRoute
+  '/workspace/$id': typeof WorkspaceIdRoute
+  '/client': typeof ClientIndexRoute
+  '/dashboard': typeof DashboardIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/client': typeof ClientRouteWithChildren
+  '/community': typeof CommunityRoute
+  '/dashboard': typeof DashboardRouteWithChildren
+  '/forgot-password': typeof ForgotPasswordRoute
+  '/login': typeof LoginRoute
+  '/marketplace': typeof MarketplaceRoute
+  '/register': typeof RegisterRoute
+  '/role': typeof RoleRoute
+  '/client/hired': typeof ClientHiredRoute
+  '/client/payments': typeof ClientPaymentsRoute
+  '/client/post': typeof ClientPostRoute
+  '/client/projects': typeof ClientProjectsRoute
+  '/client/proposals': typeof ClientProposalsRoute
+  '/client/saved': typeof ClientSavedRoute
+  '/dashboard/contracts': typeof DashboardContractsRoute
+  '/dashboard/earnings': typeof DashboardEarningsRoute
+  '/dashboard/messages': typeof DashboardMessagesRoute
+  '/dashboard/portfolio': typeof DashboardPortfolioRoute
+  '/dashboard/proposals': typeof DashboardProposalsRoute
+  '/dashboard/settings': typeof DashboardSettingsRoute
+  '/dashboard/skills': typeof DashboardSkillsRoute
+  '/workspace/$id': typeof WorkspaceIdRoute
+  '/client/': typeof ClientIndexRoute
+  '/dashboard/': typeof DashboardIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/client'
+    | '/community'
+    | '/dashboard'
+    | '/forgot-password'
+    | '/login'
+    | '/marketplace'
+    | '/register'
+    | '/role'
+    | '/client/hired'
+    | '/client/payments'
+    | '/client/post'
+    | '/client/projects'
+    | '/client/proposals'
+    | '/client/saved'
+    | '/dashboard/contracts'
+    | '/dashboard/earnings'
+    | '/dashboard/messages'
+    | '/dashboard/portfolio'
+    | '/dashboard/proposals'
+    | '/dashboard/settings'
+    | '/dashboard/skills'
+    | '/workspace/$id'
+    | '/client/'
+    | '/dashboard/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/community'
+    | '/forgot-password'
+    | '/login'
+    | '/marketplace'
+    | '/register'
+    | '/role'
+    | '/client/hired'
+    | '/client/payments'
+    | '/client/post'
+    | '/client/projects'
+    | '/client/proposals'
+    | '/client/saved'
+    | '/dashboard/contracts'
+    | '/dashboard/earnings'
+    | '/dashboard/messages'
+    | '/dashboard/portfolio'
+    | '/dashboard/proposals'
+    | '/dashboard/settings'
+    | '/dashboard/skills'
+    | '/workspace/$id'
+    | '/client'
+    | '/dashboard'
+  id:
+    | '__root__'
+    | '/'
+    | '/client'
+    | '/community'
+    | '/dashboard'
+    | '/forgot-password'
+    | '/login'
+    | '/marketplace'
+    | '/register'
+    | '/role'
+    | '/client/hired'
+    | '/client/payments'
+    | '/client/post'
+    | '/client/projects'
+    | '/client/proposals'
+    | '/client/saved'
+    | '/dashboard/contracts'
+    | '/dashboard/earnings'
+    | '/dashboard/messages'
+    | '/dashboard/portfolio'
+    | '/dashboard/proposals'
+    | '/dashboard/settings'
+    | '/dashboard/skills'
+    | '/workspace/$id'
+    | '/client/'
+    | '/dashboard/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ClientRoute: typeof ClientRouteWithChildren
+  CommunityRoute: typeof CommunityRoute
+  DashboardRoute: typeof DashboardRouteWithChildren
+  ForgotPasswordRoute: typeof ForgotPasswordRoute
+  LoginRoute: typeof LoginRoute
+  MarketplaceRoute: typeof MarketplaceRoute
+  RegisterRoute: typeof RegisterRoute
+  RoleRoute: typeof RoleRoute
+  WorkspaceIdRoute: typeof WorkspaceIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/role': {
+      id: '/role'
+      path: '/role'
+      fullPath: '/role'
+      preLoaderRoute: typeof RoleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/marketplace': {
+      id: '/marketplace'
+      path: '/marketplace'
+      fullPath: '/marketplace'
+      preLoaderRoute: typeof MarketplaceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/forgot-password': {
+      id: '/forgot-password'
+      path: '/forgot-password'
+      fullPath: '/forgot-password'
+      preLoaderRoute: typeof ForgotPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/community': {
+      id: '/community'
+      path: '/community'
+      fullPath: '/community'
+      preLoaderRoute: typeof CommunityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/client': {
+      id: '/client'
+      path: '/client'
+      fullPath: '/client'
+      preLoaderRoute: typeof ClientRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,22 +401,182 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard/': {
+      id: '/dashboard/'
+      path: '/'
+      fullPath: '/dashboard/'
+      preLoaderRoute: typeof DashboardIndexRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/client/': {
+      id: '/client/'
+      path: '/'
+      fullPath: '/client/'
+      preLoaderRoute: typeof ClientIndexRouteImport
+      parentRoute: typeof ClientRoute
+    }
+    '/workspace/$id': {
+      id: '/workspace/$id'
+      path: '/workspace/$id'
+      fullPath: '/workspace/$id'
+      preLoaderRoute: typeof WorkspaceIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard/skills': {
+      id: '/dashboard/skills'
+      path: '/skills'
+      fullPath: '/dashboard/skills'
+      preLoaderRoute: typeof DashboardSkillsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/settings': {
+      id: '/dashboard/settings'
+      path: '/settings'
+      fullPath: '/dashboard/settings'
+      preLoaderRoute: typeof DashboardSettingsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/proposals': {
+      id: '/dashboard/proposals'
+      path: '/proposals'
+      fullPath: '/dashboard/proposals'
+      preLoaderRoute: typeof DashboardProposalsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/portfolio': {
+      id: '/dashboard/portfolio'
+      path: '/portfolio'
+      fullPath: '/dashboard/portfolio'
+      preLoaderRoute: typeof DashboardPortfolioRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/messages': {
+      id: '/dashboard/messages'
+      path: '/messages'
+      fullPath: '/dashboard/messages'
+      preLoaderRoute: typeof DashboardMessagesRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/earnings': {
+      id: '/dashboard/earnings'
+      path: '/earnings'
+      fullPath: '/dashboard/earnings'
+      preLoaderRoute: typeof DashboardEarningsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/contracts': {
+      id: '/dashboard/contracts'
+      path: '/contracts'
+      fullPath: '/dashboard/contracts'
+      preLoaderRoute: typeof DashboardContractsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/client/saved': {
+      id: '/client/saved'
+      path: '/saved'
+      fullPath: '/client/saved'
+      preLoaderRoute: typeof ClientSavedRouteImport
+      parentRoute: typeof ClientRoute
+    }
+    '/client/proposals': {
+      id: '/client/proposals'
+      path: '/proposals'
+      fullPath: '/client/proposals'
+      preLoaderRoute: typeof ClientProposalsRouteImport
+      parentRoute: typeof ClientRoute
+    }
+    '/client/projects': {
+      id: '/client/projects'
+      path: '/projects'
+      fullPath: '/client/projects'
+      preLoaderRoute: typeof ClientProjectsRouteImport
+      parentRoute: typeof ClientRoute
+    }
+    '/client/post': {
+      id: '/client/post'
+      path: '/post'
+      fullPath: '/client/post'
+      preLoaderRoute: typeof ClientPostRouteImport
+      parentRoute: typeof ClientRoute
+    }
+    '/client/payments': {
+      id: '/client/payments'
+      path: '/payments'
+      fullPath: '/client/payments'
+      preLoaderRoute: typeof ClientPaymentsRouteImport
+      parentRoute: typeof ClientRoute
+    }
+    '/client/hired': {
+      id: '/client/hired'
+      path: '/hired'
+      fullPath: '/client/hired'
+      preLoaderRoute: typeof ClientHiredRouteImport
+      parentRoute: typeof ClientRoute
+    }
   }
 }
 
+interface ClientRouteChildren {
+  ClientHiredRoute: typeof ClientHiredRoute
+  ClientPaymentsRoute: typeof ClientPaymentsRoute
+  ClientPostRoute: typeof ClientPostRoute
+  ClientProjectsRoute: typeof ClientProjectsRoute
+  ClientProposalsRoute: typeof ClientProposalsRoute
+  ClientSavedRoute: typeof ClientSavedRoute
+  ClientIndexRoute: typeof ClientIndexRoute
+}
+
+const ClientRouteChildren: ClientRouteChildren = {
+  ClientHiredRoute: ClientHiredRoute,
+  ClientPaymentsRoute: ClientPaymentsRoute,
+  ClientPostRoute: ClientPostRoute,
+  ClientProjectsRoute: ClientProjectsRoute,
+  ClientProposalsRoute: ClientProposalsRoute,
+  ClientSavedRoute: ClientSavedRoute,
+  ClientIndexRoute: ClientIndexRoute,
+}
+
+const ClientRouteWithChildren =
+  ClientRoute._addFileChildren(ClientRouteChildren)
+
+interface DashboardRouteChildren {
+  DashboardContractsRoute: typeof DashboardContractsRoute
+  DashboardEarningsRoute: typeof DashboardEarningsRoute
+  DashboardMessagesRoute: typeof DashboardMessagesRoute
+  DashboardPortfolioRoute: typeof DashboardPortfolioRoute
+  DashboardProposalsRoute: typeof DashboardProposalsRoute
+  DashboardSettingsRoute: typeof DashboardSettingsRoute
+  DashboardSkillsRoute: typeof DashboardSkillsRoute
+  DashboardIndexRoute: typeof DashboardIndexRoute
+}
+
+const DashboardRouteChildren: DashboardRouteChildren = {
+  DashboardContractsRoute: DashboardContractsRoute,
+  DashboardEarningsRoute: DashboardEarningsRoute,
+  DashboardMessagesRoute: DashboardMessagesRoute,
+  DashboardPortfolioRoute: DashboardPortfolioRoute,
+  DashboardProposalsRoute: DashboardProposalsRoute,
+  DashboardSettingsRoute: DashboardSettingsRoute,
+  DashboardSkillsRoute: DashboardSkillsRoute,
+  DashboardIndexRoute: DashboardIndexRoute,
+}
+
+const DashboardRouteWithChildren = DashboardRoute._addFileChildren(
+  DashboardRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ClientRoute: ClientRouteWithChildren,
+  CommunityRoute: CommunityRoute,
+  DashboardRoute: DashboardRouteWithChildren,
+  ForgotPasswordRoute: ForgotPasswordRoute,
+  LoginRoute: LoginRoute,
+  MarketplaceRoute: MarketplaceRoute,
+  RegisterRoute: RegisterRoute,
+  RoleRoute: RoleRoute,
+  WorkspaceIdRoute: WorkspaceIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
