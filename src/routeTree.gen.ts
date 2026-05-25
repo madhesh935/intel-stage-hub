@@ -11,9 +11,15 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as RoleRouteImport } from './routes/role'
 import { Route as RegisterRouteImport } from './routes/register'
+import { Route as MarketplaceRouteImport } from './routes/marketplace'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
+import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as CommunityRouteImport } from './routes/community'
+import { Route as ClientRouteImport } from './routes/client'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DashboardIndexRouteImport } from './routes/dashboard.index'
+import { Route as ClientIndexRouteImport } from './routes/client.index'
 
 const RoleRoute = RoleRouteImport.update({
   id: '/role',
@@ -23,6 +29,11 @@ const RoleRoute = RoleRouteImport.update({
 const RegisterRoute = RegisterRouteImport.update({
   id: '/register',
   path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarketplaceRoute = MarketplaceRouteImport.update({
+  id: '/marketplace',
+  path: '/marketplace',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoginRoute = LoginRouteImport.update({
@@ -35,46 +46,123 @@ const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
   path: '/forgot-password',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommunityRoute = CommunityRouteImport.update({
+  id: '/community',
+  path: '/community',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClientRoute = ClientRouteImport.update({
+  id: '/client',
+  path: '/client',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardIndexRoute = DashboardIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const ClientIndexRoute = ClientIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ClientRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/client': typeof ClientRouteWithChildren
+  '/community': typeof CommunityRoute
+  '/dashboard': typeof DashboardRouteWithChildren
   '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
+  '/marketplace': typeof MarketplaceRoute
   '/register': typeof RegisterRoute
   '/role': typeof RoleRoute
+  '/client/': typeof ClientIndexRoute
+  '/dashboard/': typeof DashboardIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/community': typeof CommunityRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
+  '/marketplace': typeof MarketplaceRoute
   '/register': typeof RegisterRoute
   '/role': typeof RoleRoute
+  '/client': typeof ClientIndexRoute
+  '/dashboard': typeof DashboardIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/client': typeof ClientRouteWithChildren
+  '/community': typeof CommunityRoute
+  '/dashboard': typeof DashboardRouteWithChildren
   '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
+  '/marketplace': typeof MarketplaceRoute
   '/register': typeof RegisterRoute
   '/role': typeof RoleRoute
+  '/client/': typeof ClientIndexRoute
+  '/dashboard/': typeof DashboardIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/forgot-password' | '/login' | '/register' | '/role'
+  fullPaths:
+    | '/'
+    | '/client'
+    | '/community'
+    | '/dashboard'
+    | '/forgot-password'
+    | '/login'
+    | '/marketplace'
+    | '/register'
+    | '/role'
+    | '/client/'
+    | '/dashboard/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/forgot-password' | '/login' | '/register' | '/role'
-  id: '__root__' | '/' | '/forgot-password' | '/login' | '/register' | '/role'
+  to:
+    | '/'
+    | '/community'
+    | '/forgot-password'
+    | '/login'
+    | '/marketplace'
+    | '/register'
+    | '/role'
+    | '/client'
+    | '/dashboard'
+  id:
+    | '__root__'
+    | '/'
+    | '/client'
+    | '/community'
+    | '/dashboard'
+    | '/forgot-password'
+    | '/login'
+    | '/marketplace'
+    | '/register'
+    | '/role'
+    | '/client/'
+    | '/dashboard/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ClientRoute: typeof ClientRouteWithChildren
+  CommunityRoute: typeof CommunityRoute
+  DashboardRoute: typeof DashboardRouteWithChildren
   ForgotPasswordRoute: typeof ForgotPasswordRoute
   LoginRoute: typeof LoginRoute
+  MarketplaceRoute: typeof MarketplaceRoute
   RegisterRoute: typeof RegisterRoute
   RoleRoute: typeof RoleRoute
 }
@@ -95,6 +183,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RegisterRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/marketplace': {
+      id: '/marketplace'
+      path: '/marketplace'
+      fullPath: '/marketplace'
+      preLoaderRoute: typeof MarketplaceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/login': {
       id: '/login'
       path: '/login'
@@ -109,6 +204,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ForgotPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/community': {
+      id: '/community'
+      path: '/community'
+      fullPath: '/community'
+      preLoaderRoute: typeof CommunityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/client': {
+      id: '/client'
+      path: '/client'
+      fullPath: '/client'
+      preLoaderRoute: typeof ClientRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -116,13 +232,54 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard/': {
+      id: '/dashboard/'
+      path: '/'
+      fullPath: '/dashboard/'
+      preLoaderRoute: typeof DashboardIndexRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/client/': {
+      id: '/client/'
+      path: '/'
+      fullPath: '/client/'
+      preLoaderRoute: typeof ClientIndexRouteImport
+      parentRoute: typeof ClientRoute
+    }
   }
 }
 
+interface ClientRouteChildren {
+  ClientIndexRoute: typeof ClientIndexRoute
+}
+
+const ClientRouteChildren: ClientRouteChildren = {
+  ClientIndexRoute: ClientIndexRoute,
+}
+
+const ClientRouteWithChildren =
+  ClientRoute._addFileChildren(ClientRouteChildren)
+
+interface DashboardRouteChildren {
+  DashboardIndexRoute: typeof DashboardIndexRoute
+}
+
+const DashboardRouteChildren: DashboardRouteChildren = {
+  DashboardIndexRoute: DashboardIndexRoute,
+}
+
+const DashboardRouteWithChildren = DashboardRoute._addFileChildren(
+  DashboardRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ClientRoute: ClientRouteWithChildren,
+  CommunityRoute: CommunityRoute,
+  DashboardRoute: DashboardRouteWithChildren,
   ForgotPasswordRoute: ForgotPasswordRoute,
   LoginRoute: LoginRoute,
+  MarketplaceRoute: MarketplaceRoute,
   RegisterRoute: RegisterRoute,
   RoleRoute: RoleRoute,
 }
