@@ -20,6 +20,7 @@ import { Route as ClientRouteImport } from './routes/client'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard.index'
 import { Route as ClientIndexRouteImport } from './routes/client.index'
+import { Route as WorkspaceIdRouteImport } from './routes/workspace.$id'
 import { Route as DashboardSkillsRouteImport } from './routes/dashboard.skills'
 import { Route as DashboardSettingsRouteImport } from './routes/dashboard.settings'
 import { Route as DashboardProposalsRouteImport } from './routes/dashboard.proposals'
@@ -27,6 +28,12 @@ import { Route as DashboardPortfolioRouteImport } from './routes/dashboard.portf
 import { Route as DashboardMessagesRouteImport } from './routes/dashboard.messages'
 import { Route as DashboardEarningsRouteImport } from './routes/dashboard.earnings'
 import { Route as DashboardContractsRouteImport } from './routes/dashboard.contracts'
+import { Route as ClientSavedRouteImport } from './routes/client.saved'
+import { Route as ClientProposalsRouteImport } from './routes/client.proposals'
+import { Route as ClientProjectsRouteImport } from './routes/client.projects'
+import { Route as ClientPostRouteImport } from './routes/client.post'
+import { Route as ClientPaymentsRouteImport } from './routes/client.payments'
+import { Route as ClientHiredRouteImport } from './routes/client.hired'
 
 const RoleRoute = RoleRouteImport.update({
   id: '/role',
@@ -83,6 +90,11 @@ const ClientIndexRoute = ClientIndexRouteImport.update({
   path: '/',
   getParentRoute: () => ClientRoute,
 } as any)
+const WorkspaceIdRoute = WorkspaceIdRouteImport.update({
+  id: '/workspace/$id',
+  path: '/workspace/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DashboardSkillsRoute = DashboardSkillsRouteImport.update({
   id: '/skills',
   path: '/skills',
@@ -118,6 +130,36 @@ const DashboardContractsRoute = DashboardContractsRouteImport.update({
   path: '/contracts',
   getParentRoute: () => DashboardRoute,
 } as any)
+const ClientSavedRoute = ClientSavedRouteImport.update({
+  id: '/saved',
+  path: '/saved',
+  getParentRoute: () => ClientRoute,
+} as any)
+const ClientProposalsRoute = ClientProposalsRouteImport.update({
+  id: '/proposals',
+  path: '/proposals',
+  getParentRoute: () => ClientRoute,
+} as any)
+const ClientProjectsRoute = ClientProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
+  getParentRoute: () => ClientRoute,
+} as any)
+const ClientPostRoute = ClientPostRouteImport.update({
+  id: '/post',
+  path: '/post',
+  getParentRoute: () => ClientRoute,
+} as any)
+const ClientPaymentsRoute = ClientPaymentsRouteImport.update({
+  id: '/payments',
+  path: '/payments',
+  getParentRoute: () => ClientRoute,
+} as any)
+const ClientHiredRoute = ClientHiredRouteImport.update({
+  id: '/hired',
+  path: '/hired',
+  getParentRoute: () => ClientRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -129,6 +171,12 @@ export interface FileRoutesByFullPath {
   '/marketplace': typeof MarketplaceRoute
   '/register': typeof RegisterRoute
   '/role': typeof RoleRoute
+  '/client/hired': typeof ClientHiredRoute
+  '/client/payments': typeof ClientPaymentsRoute
+  '/client/post': typeof ClientPostRoute
+  '/client/projects': typeof ClientProjectsRoute
+  '/client/proposals': typeof ClientProposalsRoute
+  '/client/saved': typeof ClientSavedRoute
   '/dashboard/contracts': typeof DashboardContractsRoute
   '/dashboard/earnings': typeof DashboardEarningsRoute
   '/dashboard/messages': typeof DashboardMessagesRoute
@@ -136,6 +184,7 @@ export interface FileRoutesByFullPath {
   '/dashboard/proposals': typeof DashboardProposalsRoute
   '/dashboard/settings': typeof DashboardSettingsRoute
   '/dashboard/skills': typeof DashboardSkillsRoute
+  '/workspace/$id': typeof WorkspaceIdRoute
   '/client/': typeof ClientIndexRoute
   '/dashboard/': typeof DashboardIndexRoute
 }
@@ -147,6 +196,12 @@ export interface FileRoutesByTo {
   '/marketplace': typeof MarketplaceRoute
   '/register': typeof RegisterRoute
   '/role': typeof RoleRoute
+  '/client/hired': typeof ClientHiredRoute
+  '/client/payments': typeof ClientPaymentsRoute
+  '/client/post': typeof ClientPostRoute
+  '/client/projects': typeof ClientProjectsRoute
+  '/client/proposals': typeof ClientProposalsRoute
+  '/client/saved': typeof ClientSavedRoute
   '/dashboard/contracts': typeof DashboardContractsRoute
   '/dashboard/earnings': typeof DashboardEarningsRoute
   '/dashboard/messages': typeof DashboardMessagesRoute
@@ -154,6 +209,7 @@ export interface FileRoutesByTo {
   '/dashboard/proposals': typeof DashboardProposalsRoute
   '/dashboard/settings': typeof DashboardSettingsRoute
   '/dashboard/skills': typeof DashboardSkillsRoute
+  '/workspace/$id': typeof WorkspaceIdRoute
   '/client': typeof ClientIndexRoute
   '/dashboard': typeof DashboardIndexRoute
 }
@@ -168,6 +224,12 @@ export interface FileRoutesById {
   '/marketplace': typeof MarketplaceRoute
   '/register': typeof RegisterRoute
   '/role': typeof RoleRoute
+  '/client/hired': typeof ClientHiredRoute
+  '/client/payments': typeof ClientPaymentsRoute
+  '/client/post': typeof ClientPostRoute
+  '/client/projects': typeof ClientProjectsRoute
+  '/client/proposals': typeof ClientProposalsRoute
+  '/client/saved': typeof ClientSavedRoute
   '/dashboard/contracts': typeof DashboardContractsRoute
   '/dashboard/earnings': typeof DashboardEarningsRoute
   '/dashboard/messages': typeof DashboardMessagesRoute
@@ -175,6 +237,7 @@ export interface FileRoutesById {
   '/dashboard/proposals': typeof DashboardProposalsRoute
   '/dashboard/settings': typeof DashboardSettingsRoute
   '/dashboard/skills': typeof DashboardSkillsRoute
+  '/workspace/$id': typeof WorkspaceIdRoute
   '/client/': typeof ClientIndexRoute
   '/dashboard/': typeof DashboardIndexRoute
 }
@@ -190,6 +253,12 @@ export interface FileRouteTypes {
     | '/marketplace'
     | '/register'
     | '/role'
+    | '/client/hired'
+    | '/client/payments'
+    | '/client/post'
+    | '/client/projects'
+    | '/client/proposals'
+    | '/client/saved'
     | '/dashboard/contracts'
     | '/dashboard/earnings'
     | '/dashboard/messages'
@@ -197,6 +266,7 @@ export interface FileRouteTypes {
     | '/dashboard/proposals'
     | '/dashboard/settings'
     | '/dashboard/skills'
+    | '/workspace/$id'
     | '/client/'
     | '/dashboard/'
   fileRoutesByTo: FileRoutesByTo
@@ -208,6 +278,12 @@ export interface FileRouteTypes {
     | '/marketplace'
     | '/register'
     | '/role'
+    | '/client/hired'
+    | '/client/payments'
+    | '/client/post'
+    | '/client/projects'
+    | '/client/proposals'
+    | '/client/saved'
     | '/dashboard/contracts'
     | '/dashboard/earnings'
     | '/dashboard/messages'
@@ -215,6 +291,7 @@ export interface FileRouteTypes {
     | '/dashboard/proposals'
     | '/dashboard/settings'
     | '/dashboard/skills'
+    | '/workspace/$id'
     | '/client'
     | '/dashboard'
   id:
@@ -228,6 +305,12 @@ export interface FileRouteTypes {
     | '/marketplace'
     | '/register'
     | '/role'
+    | '/client/hired'
+    | '/client/payments'
+    | '/client/post'
+    | '/client/projects'
+    | '/client/proposals'
+    | '/client/saved'
     | '/dashboard/contracts'
     | '/dashboard/earnings'
     | '/dashboard/messages'
@@ -235,6 +318,7 @@ export interface FileRouteTypes {
     | '/dashboard/proposals'
     | '/dashboard/settings'
     | '/dashboard/skills'
+    | '/workspace/$id'
     | '/client/'
     | '/dashboard/'
   fileRoutesById: FileRoutesById
@@ -249,6 +333,7 @@ export interface RootRouteChildren {
   MarketplaceRoute: typeof MarketplaceRoute
   RegisterRoute: typeof RegisterRoute
   RoleRoute: typeof RoleRoute
+  WorkspaceIdRoute: typeof WorkspaceIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -330,6 +415,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ClientIndexRouteImport
       parentRoute: typeof ClientRoute
     }
+    '/workspace/$id': {
+      id: '/workspace/$id'
+      path: '/workspace/$id'
+      fullPath: '/workspace/$id'
+      preLoaderRoute: typeof WorkspaceIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/dashboard/skills': {
       id: '/dashboard/skills'
       path: '/skills'
@@ -379,14 +471,68 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardContractsRouteImport
       parentRoute: typeof DashboardRoute
     }
+    '/client/saved': {
+      id: '/client/saved'
+      path: '/saved'
+      fullPath: '/client/saved'
+      preLoaderRoute: typeof ClientSavedRouteImport
+      parentRoute: typeof ClientRoute
+    }
+    '/client/proposals': {
+      id: '/client/proposals'
+      path: '/proposals'
+      fullPath: '/client/proposals'
+      preLoaderRoute: typeof ClientProposalsRouteImport
+      parentRoute: typeof ClientRoute
+    }
+    '/client/projects': {
+      id: '/client/projects'
+      path: '/projects'
+      fullPath: '/client/projects'
+      preLoaderRoute: typeof ClientProjectsRouteImport
+      parentRoute: typeof ClientRoute
+    }
+    '/client/post': {
+      id: '/client/post'
+      path: '/post'
+      fullPath: '/client/post'
+      preLoaderRoute: typeof ClientPostRouteImport
+      parentRoute: typeof ClientRoute
+    }
+    '/client/payments': {
+      id: '/client/payments'
+      path: '/payments'
+      fullPath: '/client/payments'
+      preLoaderRoute: typeof ClientPaymentsRouteImport
+      parentRoute: typeof ClientRoute
+    }
+    '/client/hired': {
+      id: '/client/hired'
+      path: '/hired'
+      fullPath: '/client/hired'
+      preLoaderRoute: typeof ClientHiredRouteImport
+      parentRoute: typeof ClientRoute
+    }
   }
 }
 
 interface ClientRouteChildren {
+  ClientHiredRoute: typeof ClientHiredRoute
+  ClientPaymentsRoute: typeof ClientPaymentsRoute
+  ClientPostRoute: typeof ClientPostRoute
+  ClientProjectsRoute: typeof ClientProjectsRoute
+  ClientProposalsRoute: typeof ClientProposalsRoute
+  ClientSavedRoute: typeof ClientSavedRoute
   ClientIndexRoute: typeof ClientIndexRoute
 }
 
 const ClientRouteChildren: ClientRouteChildren = {
+  ClientHiredRoute: ClientHiredRoute,
+  ClientPaymentsRoute: ClientPaymentsRoute,
+  ClientPostRoute: ClientPostRoute,
+  ClientProjectsRoute: ClientProjectsRoute,
+  ClientProposalsRoute: ClientProposalsRoute,
+  ClientSavedRoute: ClientSavedRoute,
   ClientIndexRoute: ClientIndexRoute,
 }
 
@@ -429,6 +575,7 @@ const rootRouteChildren: RootRouteChildren = {
   MarketplaceRoute: MarketplaceRoute,
   RegisterRoute: RegisterRoute,
   RoleRoute: RoleRoute,
+  WorkspaceIdRoute: WorkspaceIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
